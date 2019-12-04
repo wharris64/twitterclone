@@ -1,0 +1,9 @@
+<li><a href = "/login/"> <button>Login</button></a></li>
+ <li><a href = "/logout/"><button>Logout</button></a></li>
+ <li><a href = "/createuser/"> <button>Create a new User</button></a></li>
+    {% for i in data %}
+       <a href="/tweet/{{i.id}}/"> <li>{{ i.description }}</li> </a>       
+
+    {% endfor %}
+
+ </ul>
