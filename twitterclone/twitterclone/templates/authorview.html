@@ -1,0 +1,13 @@
+
+<ul>
+{% for a in twitter_user %}
+   <li>Name: {{ a.name }} </li>
+    <li>Bio: {{ a.biosection }} </li>
+    <li><p>Following Count:</p></li>
+{% endfor %}
+</ul>
+{% comment %} <ul>
+{% for ar in author_recipe  %}
+   <li> Recipes: <a href="/detail/{{ar.id}}/">{{ ar.title }} </a> </li>
+{% endfor %}
+</ul> {% endcomment %}

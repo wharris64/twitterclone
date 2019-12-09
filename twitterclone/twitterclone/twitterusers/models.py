@@ -5,8 +5,7 @@ class TwitterUser(models.Model):
     name = models.CharField(max_length = 50)
     bio = models.TextField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    following = models.ManyToManyField('self', symmetrical=False, related_name="related_to")
-    
+    following = models.ManyToManyField('self', symmetrical=False, related_name="related_to",blank=True )
     def __str__(self):
             return self.name
 

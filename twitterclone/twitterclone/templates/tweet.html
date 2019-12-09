@@ -2,7 +2,7 @@
 {% for tweet in tweet %}
     
     
-   <li><a href="/authorview/{{tweet.TwitterUsers.id}}/"> {{tweet.TwitterUsers}} </a></li>
+   <li><a href="/authorview/{{tweet.twitteruser.id}}/"> {{tweet.twitteruser}} </a></li>
     <li>{{tweet.description}}</li>
    
 {% endfor %}

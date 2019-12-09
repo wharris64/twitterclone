@@ -1,10 +1,10 @@
-from twitterclone.twitterclone.twitterusers import models
+from twitterclone.twitterusers import models
 from django.contrib import admin
 from django.urls import path
-from twitterclone.twitterclone.twitterusers import views
+from twitterclone.twitterusers import views
 
 
 
 urlpatterns = [
-
+path('authorview/<int:id>/', views.authorview),
 ]

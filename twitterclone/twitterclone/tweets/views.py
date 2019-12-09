@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from twitterclone.twitterclone.tweets.models import Tweets
-from twitterclone.twitterclone.tweets.forms import CraftTweet
+from twitterclone.tweets.models import Tweet
+from twitterclone.tweets.forms import CraftTweet
+from twitterclone.twitterusers.models import TwitterUser
 
 @login_required
 def craft_tweet(request):
@@ -14,16 +15,21 @@ def craft_tweet(request):
 
         if form.is_valid():
             data= form.cleaned_data
-            Tweets.objects.create(
-                
-                description=data['description'],
+            Tweet.objects.create(
+                twitteruser=request.user.twitteruser,
+                description=data['description']
             )
-            return render(request, "thanks.html")
+            return redirect('/')
     else:
         form = CraftTweet()
     return render(request, html, {"form": form})
 
 def tweet(request, id):
     html = "tweet.html"
-    tweet = Tweets.objects.filter(id=id)
+    tweet = Tweet.objects.filter(id=id)
     return render(request, html, {'tweet':tweet})
+@login_required
+def feed(request):
+    html = "index.html"
+    feed = Tweet.objects.filter().order_by("-created_at")
+    return render(request, html, {"data":feed})

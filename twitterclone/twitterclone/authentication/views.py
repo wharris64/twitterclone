@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from twitterclone.twitterclone.authentication.forms import CreateUser, LoginUser
-from twitterclone.twitterclone.twitterusers.models import TwitterUser
+from twitterclone.authentication.forms import CreateUser, LoginUser
+from twitterclone.twitterusers.models import TwitterUser
 
 # def profile
 def create_user(request):
@@ -17,19 +17,20 @@ def create_user(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            usermake =  User.objects.create(
-                username=data['username'],
+            usermake =  User.objects.create_user(
+                username=data['user'],
                 password=data['password']
             )
             TwitterUser.objects.create(
-                name=data['name'],
+                name=data['user'],
                 user=usermake
-            )
-                
-        return redirect('/')
+            ) 
+        else:
+            return HttpResponse("login failed")       
+        return redirect('/login/')
     else:
         form = CreateUser()
-    
+    return render(request, html, {'form':form})
 def user_login(request):
     html = "user_login.html"
     form = LoginUser()
@@ -37,7 +38,7 @@ def user_login(request):
         form = LoginUser(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = authenticate(username=data["username"], password=data["password"])
+            user = authenticate(username=data["user"], password=data["password"])
             if user:
                 login(request, user)
             return redirect(request.GET.get("next", '/'))
