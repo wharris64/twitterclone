@@ -7,4 +7,5 @@ from twitterclone.twitterusers import views
 
 urlpatterns = [
 path('authorview/<int:id>/', views.authorview),
+path('profileview/<int:id>/', views.profileview)
 ]
