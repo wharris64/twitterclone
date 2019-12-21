@@ -6,7 +6,7 @@ from twitterclone.tweets import views
 
 
 urlpatterns = [
-    path('crafttweet/',views.craft_tweet),
-    path("tweet/<int:id>/", views.tweet),
-    path('', views.feed )
+    path('crafttweet/',views.CraftTweet.as_view()),
+    path("tweet/<int:id>/", views.TweetView.as_view()),
+    path('', views.Feed.as_view())
 ]

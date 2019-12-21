@@ -18,6 +18,7 @@ from django.urls import path
 from twitterclone.tweets.urls import urlpatterns as tweet_urls
 from twitterclone.twitterusers.urls import urlpatterns as twitteruser_urls
 from twitterclone.authentication.urls import urlpatterns as auth_urls
+from twitterclone.notifications.urls import urlpatterns as notifications_urls
 # admin.site.register(models.Tweets)
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +27,4 @@ urlpatterns = [
 urlpatterns += tweet_urls
 urlpatterns += twitteruser_urls
 urlpatterns += auth_urls
+urlpatterns += notifications_urls

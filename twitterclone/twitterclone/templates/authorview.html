@@ -2,9 +2,15 @@
 <ul>
 
    <li>Name: {{ twitter_user.name }} </li>
-    <li>Bio: {{ twitter_user.biosection }} </li>
+    <li>Bio: {{ twitter_user.bio }} </li>
+    <li><a href = '/follow_twitter_user/{{twitter_user.id}}/'<button>Follow</button></a></li>
+    <li><a href = '/unfollow_twitter_user/{{twitter_user.id}}/'<button>UnFollow</button></a></li>  
     {% comment %} <li><p>Following Count:{{order = Or.objects.last()}}</p></li> {% endcomment %}
     <li><p>Tweet Count:{{ tweet_count }}</p></li>
+    <li><p>Follow Count:{{ following_count}}</p></li>
+    {% for i in user_tweets %}
+        <li> <a href="/tweet/{{i.id}}/">{{i.description}}</a></li>
+    {% endfor %}
 
 </ul>
 {% comment %} <ul>

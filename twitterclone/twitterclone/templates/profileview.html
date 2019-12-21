@@ -1,9 +1,11 @@
 <h1>I Hate Django</h1>
 <ul>
 
-   <li>Name: {{ twitter_user.name }} </li>
-    <li>Bio: {{ twitter_user.biosection }} </li>
-    {% comment %} <li><p>Following Count:{{order = Or.objects.last()}}</p></li> {% endcomment %}
+    <li>Name: {{ twitter_user.name }} </li>
+    <li>Bio: {{ twitter_user.bio }} </li>
     <li><p>Tweet Count:{{ tweet_count }}</p></li>
-
+    <li><p>Follow Count:{{ following_count}}</p></li>
+    {% for i in user_tweets %}
+        <li> <a href="/tweet/{{i.id}}/">{{i.description}}</a></li>
+    {% endfor %}
 </ul>
