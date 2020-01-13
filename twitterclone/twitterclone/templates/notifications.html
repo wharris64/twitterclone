@@ -1,1 +1,6 @@
-Notifications
+<h1>Notifications</h1>
+{% for i in notifications %}
+{% if not i.seen %}
+<p>To:{{ i.message.description }}</p>
+{% endif %}
+{% endfor %}

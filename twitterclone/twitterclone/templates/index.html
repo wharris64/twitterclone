@@ -1,6 +1,7 @@
 <li><a href = "/login/"> <button>Login</button></a></li>
  <li><a href = "/logout/"><button>Logout</button></a></li>
  <li><a href = "/crafttweet/"><button>Post</button></a></li>
+ <li><a href = "/notifications/"><button>Notifications</button></a></li>
  <li><a href = "/profileview/{{request.user.id}}/"><button>my profile</button></a></li>
     {% for i in data %}
        <li><a href="/authorview/{{i.twitteruser.id}}/"> {{i.twitteruser}}: </a> <a href="/tweet/{{i.id}}/">{{i.description}}</a></li>
